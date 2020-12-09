@@ -1,13 +1,14 @@
 var directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 var elem = document.getElementById("image");
-var posVer = elem.style.top;
-var posHor = elem.style.left;
+var posVer = 0
+var posHor = 0
 var hitOrMiss = [0, 0, 0]; // hits, misses, total
 
-setInterval(function func(){
-  i = Math.floor(Math.random() * 7);
+console.log('huidige positie: '+posHor);
 
-  switch(directions[i]){
+setInterval(function func(){
+    //switch(directions[Math.floor(Math.random() * 7)]){
+      switch('E'){
     case "N":
       posVer -= 75;
       elem.style.top = posVer + "px";
@@ -19,8 +20,10 @@ setInterval(function func(){
       elem.style.left = posHor + "px";
       break;
     case "E":
+      console.log('huidige positie: '+posHor);
       posHor += 75;
       elem.style.left = posHor + "px";
+      console.log('nieuwe positie: '+posHor);
       break;
     case "SE":
       posVer += 75;
