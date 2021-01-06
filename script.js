@@ -1,11 +1,23 @@
 var directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 var elem = document.getElementById("image");
-var posVer = 0
-var posHor = 0
+var posVer = 0;
+var posHor = 0;
 var hitOrMiss = [0, 0, 0]; // hits, misses, total
 
+function centreObject(object){
+    posVer = (document.documentElement.clientHeight - object.offsetHeight) / 2;
+    posHor = (document.documentElement.clientWidth - object.offsetWidth) / 2;
+
+    object.style.position='relative';
+    object.style.top = posVer+ 'px'; 
+    object.style.left = posHor + 'px';
+}
+
+centreObject(elem);
+console.log(elem.style.top);
+
 setInterval(function func(){
-  i = Math.floor(Math.random() * 7);
+  i = Math.floor(Math.random() * directions.length);
 
   switch(directions[i]){
     case "N":
@@ -53,7 +65,6 @@ setInterval(function func(){
 function shootMiss(){
   hitOrMiss[1] += 1;
   hitOrMiss[2] += 1;
-  event.stopPropagation()
   if(hitOrMiss[2] == 10){
     alert("Hits: " + hitOrMiss[0] + "\nMisses: " + hitOrMiss[1]);
     location.reload();
@@ -63,7 +74,7 @@ function shootMiss(){
 function shootHit(){
   hitOrMiss[0] += 1;
   hitOrMiss[2] += 1;
-  event.stopPropagation()
+  event.stopPropagation();
   if(hitOrMiss[2] == 10){
     alert("Hits: " + hitOrMiss[0] + "\nMisses: " + hitOrMiss[1]);
     location.reload();
